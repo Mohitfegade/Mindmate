@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindMate - Your Second Brain</title>
+  <link rel="icon" href="/img/favicon_circle.png" type="image/png">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <header>
+    <img src="/img/favicon_circle.png" alt="MindMate Logo" height="80">
+    <h1>Welcome to MindMate</h1>
+    <h2>Your Second Brain for Execution</h2>
+    <nav>
+      <button onclick="document.getElementById('pomodoroSection').scrollIntoView({behavior: 'smooth'})">🍅 Pomodoro</button>
+      <button onclick="document.getElementById('habitSection').scrollIntoView({behavior: 'smooth'})">📆 Habit Tracker</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Pomodoro Section -->
+    <section id="pomodoroSection">
+      <h2>Pomodoro Timer</h2>
+      <div class="mode-selector">
+        <button onclick="setMode('pomodoro')">Pomodoro</button>
+        <button onclick="setMode('short')">Short Break</button>
+        <button onclick="setMode('long')">Long Break</button>
+      </div>
+
+      <div class="timer-section">
+        <div id="task-label"></div>
+        <div class="timer-display">
+          <span id="minutes">25</span>:<span id="seconds">00</span>
+        </div>
+        <div class="controls">
+          <button onclick="startTimer()">Start</button>
+          <button onclick="pauseTimer()">Pause</button>
+          <button onclick="resetTimer()">Reset</button>
+        </div>
+        <input type="text" id="taskInput" placeholder="What are you focusing on?" />
+      </div>
+
+      <button onclick="toggleSettings()">⚙️ Settings</button>
+      <section class="settings">
+        <h3>Pomodoro Settings</h3>
+        <label>Pomodoro Duration: <input type="number" id="pomodoroDuration" value="25" /></label>
+        <label>Short Break Duration: <input type="number" id="shortDuration" value="5" /></label>
+        <label>Long Break Duration: <input type="number" id="longDuration" value="15" /></label>
+        <label>Pomodoros before Long Break: <input type="number" id="pomosBeforeLong" value="4" /></label>
+        <label><input type="checkbox" id="autoStart" /> Auto-start next session</label>
+      </section>
+
+      <div class="progress">
+        <div id="pomoCount">Completed Pomodoros: 0</div>
+        <div id="streak">🔥 Streak: 0 days</div>
+      </div>
+
+      <section class="todo">
+        <h3>To-Do List</h3>
+        <input type="text" id="todoInput" placeholder="Add a task...">
+        <button onclick="addTodo()">Add</button>
+        <ul id="todoList"></ul>
+      </section>
+    </section>
+
+    <!-- Habit Tracker Section -->
+    <section id="habitSection">
+      <h2>Habit Tracker</h2>
+      <button id="addHabitBtn">+ Add Habit</button>
+      <div id="habitList" class="habit-container"></div>
+
+      <!-- Habit Modal -->
+      <div id="habitModal" class="modal">
+        <div class="modal-content">
+          <span id="closeHabitModal" class="close">&times;</span>
+          <form id="habitForm">
+            <input type="text" id="habitName" placeholder="Habit name (e.g., Read)" required />
+            <input type="text" id="habitEmoji" placeholder="Emoji (📖)" />
+            <input type="color" id="habitColor" value="#1dd1a1" />
+            <button type="submit">Add Habit</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <div class="habit-card">
+  <strong>💧</strong> Water Intake
+  <div class="weekly-tracker">
+    <span data-day="0">M</span>
+    <span data-day="1">T</span>
+    <span data-day="2">W</span>
+    <span data-day="3">T</span>
+    <span data-day="4">F</span>
+    <span data-day="5">S</span>
+    <span data-day="6">S</span>
+  </div>
+  <div class="habit-progress">
+    <input type="number" min="0" max="8" value="0" class="daily-count" />
+    / 8 glasses
+  </div>
+</div>
+
+
+    <!-- FAQ Section -->
+    <section>
+      <h2>FAQs</h2>
+      <details>
+        <summary>What is MindMate?</summary>
+        <p>MindMate is your digital second brain to help you plan, track, and execute your goals with clarity.</p>
+      </details>
+            <details>
+        <summary>Who is MindMate for?</summary>
+        <ul>
+          <li>🚀 Dreamers who want to turn ideas into action</li>
+          <li>📚 Students managing study goals and deadlines</li>
+          <li>🧠 Creators and entrepreneurs juggling multiple projects</li>
+          <li>🧘‍♂️ Anyone who wants mental clarity and better execution</li>
+        </ul>
+      </details>
+      <details>
+        <summary>What can I do with MindMate?</summary>
+        <ul>
+          <li>✍️ Capture thoughts, tasks, and ideas in one place</li>
+          <li>🎯 Break big goals into small, actionable steps</li>
+          <li>🗓️ Plan your day/week/month with minimal distraction</li>
+          <li>📈 Track your execution streaks to stay accountable</li>
+          <li>💡 Use templates to boost productivity instantly</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Is MindMate free?</summary>
+        <p>Yes, the basic version is 100% free. We’ll also offer a Pro version with AI features, personalized streak tracking, and premium templates soon.</p>
+      </details>
+      <details>
+        <summary>Can I track habits and tasks?</summary>
+        <p>Yes! MindMate lets you create Pomodoro sessions, track daily habits, and manage tasks in one place.</p>
+      </details>
+      <details>
+        <summary>Is it free to use?</summary>
+        <p>Yes, MindMate is completely free and always will be for basic features.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 MindMate | Built with ❤️ for focus-driven minds</p>
+  </footer>
+
+  <script src="/js/script.js"></script>
+</body>
+
+</html>
+
+
