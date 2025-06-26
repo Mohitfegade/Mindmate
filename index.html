@@ -5,13 +5,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MindMate - Your Second Brain</title>
-  <link rel="icon" href="/favicon_circle.png" type="image/png" />
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" href="images/favicon_circle.png" type="image/png" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 </head>
 
 <body>
   <header>
-    <img src="/favicon_circle.png" alt="MindMate Logo" height="80" />
+    <img src="images/favicon_circle.png" alt="MindMate Logo" height="80" />
     <h1>Welcome to MindMate</h1>
     <h2>Your Second Brain for Execution</h2>
     <nav>
@@ -39,11 +40,27 @@
           <button onclick="startTimer()">Start</button>
           <button onclick="pauseTimer()">Pause</button>
           <button onclick="resetTimer()">Reset</button>
+         
+          <button onclick="toggleMusic()" id="musicBtn">🎧 Play Music</button>
+          <div class="music-controls">
+  <label for="musicSelect">🎵 Choose Background Music:</label>
+  <select id="musicSelect" onchange="changeMusic()">
+    <option value="">-- Select --</option>
+    <option value="rain">🌧️ Rain</option>
+    <option value="lofi">🎧 Lofi</option>
+    <option value="nature">🍃 Nature</option>
+  </select>
+  
+</div>
+
+<!-- Dynamic Audio Player -->
+<audio id="focusMusic" loop></audio>
         </div>
+        
         <input type="text" id="taskInput" placeholder="What are you focusing on?" />
       </div>
 
-      <button onclick="toggleSettings()">⚙️ Settings</button>
+      <button class="general-button" onclick="toggleSettings()">⚙️ Settings</button>
       <section class="settings">
         <h3>Pomodoro Settings</h3>
         <label>Pomodoro Duration: <input type="number" id="pomodoroDuration" value="25" /></label>
@@ -58,22 +75,21 @@
         <div id="streak">🔥 Streak: 0 days</div>
       </div>
 
-      <!-- To-Do List -->
       <section class="todo">
         <h3>To-Do List</h3>
         <input type="text" id="todoInput" placeholder="Add a task..." />
-        <button onclick="addTodo()">Add</button>
+        <button class="general-button" onclick="addTodo()">Add</button>
         <ul id="todoList"></ul>
+        <h4>✅ Completed Tasks</h4>
+        <ul id="completedList"></ul>
       </section>
     </section>
 
     <!-- Habit Tracker Section -->
     <section id="habitSection">
       <h2>Habit Tracker</h2>
-      <button id="addHabitBtn">+ Add Habit</button>
+      <button class="general-button"  id="addHabitBtn">+ Add Habit</button>
       <div id="habitList" class="habit-container"></div>
-
-      <!-- Modal for Habit -->
       <div id="habitModal" class="modal">
         <div class="modal-content">
           <span id="closeHabitModal" class="close">&times;</span>
@@ -87,7 +103,7 @@
       </div>
     </section>
 
-    <!-- FAQ Section -->
+    <!-- FAQs -->
     <section>
       <h2>FAQs</h2>
       <details>
@@ -124,31 +140,29 @@
     </section>
   </main>
 
-  <!-- Floating Mini Widget Toggle Button -->
-<button id="openWidgetBtn" onclick="toggleWidget(true)">
-  📌 Open Widget
-</button>
-
-<!-- Mini Widget -->
-<div id="miniWidget" class="mini-widget">
-  <div class="mini-header">
-    <strong>🍅 Pomodoro</strong>
-    <button onclick="toggleWidget(false)" class="close-btn">×</button>
+  <button id="openWidgetBtn" onclick="toggleWidget(true)">📌 Open Widget</button>
+  <div id="miniWidget" class="mini-widget">
+    <div class="mini-header">
+      <strong>🍅 Pomodoro</strong>
+      <button onclick="toggleWidget(false)" class="close-btn">×</button>
+    </div>
+    <div class="mini-body">
+      <div class="mini-timer" id="miniTimer">25:00</div>
+      <div class="mini-task" id="miniTask">No task</div>
+      <button onclick="startTimer()">▶ Start</button>
+      <button onclick="pauseTimer()">⏸ Pause</button>
+    </div>
   </div>
-  <div class="mini-body">
-    <div class="mini-timer" id="miniTimer">25:00</div>
-    <div class="mini-task" id="miniTask">No task</div>
-    <button onclick="startTimer()">▶ Start</button>
-    <button onclick="pauseTimer()">⏸ Pause</button>
-  </div>
-</div>
-
 
   <footer>
     <p>&copy; 2025 MindMate | Built with ❤️ for focus-driven minds</p>
   </footer>
 
-  <script src="/script.js"></script>
+  <!-- Pomodoro Music and Alert -->
+  <audio id="alertSound" src="https://www.soundjay.com/buttons/sounds/button-3.mp3"></audio>
+  
+  <audio id="focusMusic" src="https://www.bensound.com/bensound-music/bensound-creativeminds.mp3" loop></audio>
+  <script src="js/script.js"></script>
 </body>
 
 </html>
