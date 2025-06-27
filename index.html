@@ -5,14 +5,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MindMate - Your Second Brain</title>
-  <link rel="icon" href="images/favicon_circle.png" type="image/png" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="/favicon_circle.png" type="image/png" />
+  <link rel="stylesheet" href="/style.css" />
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 </head>
 
 <body>
   <header>
-    <img src="images/favicon_circle.png" alt="MindMate Logo" height="80" />
+    <img src="/favicon_circle.png" alt="MindMate Logo" height="80" />
     <h1>Welcome to MindMate</h1>
     <h2>Your Second Brain for Execution</h2>
     <nav>
@@ -60,7 +60,7 @@
         <input type="text" id="taskInput" placeholder="What are you focusing on?" />
       </div>
 
-      <button class="general-button" onclick="toggleSettings()">⚙️ Settings</button>
+      <button onclick="toggleSettings()">⚙️ Settings</button>
       <section class="settings">
         <h3>Pomodoro Settings</h3>
         <label>Pomodoro Duration: <input type="number" id="pomodoroDuration" value="25" /></label>
@@ -78,7 +78,7 @@
       <section class="todo">
         <h3>To-Do List</h3>
         <input type="text" id="todoInput" placeholder="Add a task..." />
-        <button class="general-button" onclick="addTodo()">Add</button>
+        <button onclick="addTodo()">Add</button>
         <ul id="todoList"></ul>
         <h4>✅ Completed Tasks</h4>
         <ul id="completedList"></ul>
@@ -88,7 +88,7 @@
     <!-- Habit Tracker Section -->
     <section id="habitSection">
       <h2>Habit Tracker</h2>
-      <button class="general-button"  id="addHabitBtn">+ Add Habit</button>
+      <button id="addHabitBtn">+ Add Habit</button>
       <div id="habitList" class="habit-container"></div>
       <div id="habitModal" class="modal">
         <div class="modal-content">
@@ -102,7 +102,19 @@
         </div>
       </div>
     </section>
+<!-- 🧠 Notes Section with Tags & Horizontal Scroll -->
+  <section id="notesSection" class="notes-section">
+    <h2>🗒️ Notes</h2>
+    <div class="note-input-area">
+      <textarea id="noteInput" placeholder="Write your note..."></textarea>
+      <input type="text" id="tagInput" placeholder="#tags (comma separated)">
+      <button onclick="saveNote()">💾 Save</button>
+    </div>
 
+    <div id="notesList" class="notes-list horizontal-scroll">
+      <!-- Note cards injected here -->
+    </div>
+  </section>
     <!-- FAQs -->
     <section>
       <h2>FAQs</h2>
@@ -162,7 +174,7 @@
   <audio id="alertSound" src="https://www.soundjay.com/buttons/sounds/button-3.mp3"></audio>
   
   <audio id="focusMusic" src="https://www.bensound.com/bensound-music/bensound-creativeminds.mp3" loop></audio>
-  <script src="js/script.js"></script>
+  <script src="/script.js"></script>
 </body>
 
 </html>

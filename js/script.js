@@ -189,3 +189,58 @@ window.onload = () => {
   document.querySelector('.settings').style.display = "none";
   toggleWidget(true);
 };
+
+// Notes: Tag Support + Save to localStorage
+function loadNotes() {
+  const notes = JSON.parse(localStorage.getItem("mindmateNotes")) || [];
+  const notesList = document.getElementById("notesList");
+  notesList.innerHTML = "";
+
+  notes.forEach((note, index) => {
+    const card = document.createElement("div");
+    card.className = "note-card";
+    card.innerHTML = `
+      <p>${note.text}</p>
+      <div class="note-tags">${note.tags.map(tag => `#${tag}`).join(" ")}</div>
+      <div class="note-actions">
+        <button onclick="editNote(${index})">✏️</button>
+        <button onclick="deleteNote(${index})">🗑️</button>
+      </div>
+    `;
+    notesList.appendChild(card);
+  });
+}
+
+function saveNote() {
+  const noteText = document.getElementById("noteInput").value.trim();
+  const tagText = document.getElementById("tagInput").value.trim();
+  if (!noteText) return;
+
+  const tags = tagText ? tagText.split(",").map(t => t.trim()).filter(Boolean) : [];
+  const notes = JSON.parse(localStorage.getItem("mindmateNotes")) || [];
+  notes.push({ text: noteText, tags });
+  localStorage.setItem("mindmateNotes", JSON.stringify(notes));
+  document.getElementById("noteInput").value = "";
+  document.getElementById("tagInput").value = "";
+  loadNotes();
+}
+
+function deleteNote(index) {
+  const notes = JSON.parse(localStorage.getItem("mindmateNotes")) || [];
+  notes.splice(index, 1);
+  localStorage.setItem("mindmateNotes", JSON.stringify(notes));
+  loadNotes();
+}
+
+function editNote(index) {
+  const notes = JSON.parse(localStorage.getItem("mindmateNotes")) || [];
+  const updated = prompt("Edit your note:", notes[index].text);
+  if (updated !== null) {
+    notes[index].text = updated;
+    localStorage.setItem("mindmateNotes", JSON.stringify(notes));
+    loadNotes();
+  }
+}
+
+// ✅ Load notes when page loads
+window.addEventListener("load", loadNotes);

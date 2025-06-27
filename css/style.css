@@ -129,10 +129,11 @@ input[type="color"] {
 }
 
 input::placeholder {
-  color: #888;
+  color: #a5a3a3;
 }
 
 .settings label {
+  
   display: block;
   margin: 10px 0;
 }
@@ -338,17 +339,158 @@ footer {
   margin-top: 20px;
   color: #25d366;
 }
-
-.general-button {
-  margin: 5px;
-  padding: 10px 14px;
-  border: none;
-  background-color: #0b81e2;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: 0.3s;
+/* 🗒️ Notes Section */
+.notes-section {
+  margin-top: 40px;
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+.notes-section h2 {
+  color: #25d366;
+  margin-bottom: 10px;
+}
+
+#noteInput {
+  width: 100%;
+  height: 100px;
+  background: #121212;
+  color: #e0e0e0;
+  border: 1px solid #333;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  resize: vertical;
+}
+
+.notes-section button {
+  background-color: #1b8542;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.notes-section button:hover {
+  background-color: #1ebc59;
+}
+
+.notes-list {
+  margin-top: 20px;
+}
+
+.note-card {
+  background-color: #121212;
+  border: 1px solid #444;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.note-card p {
+  color: #ccc;
+}
+
+.note-actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.note-actions button {
+  background: none;
+  border: none;
+  color: #ff6b6b;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 5px;
+}
+/* Notes Section Styles */
+.notes-section {
+  margin-top: 30px;
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+.notes-section h2 {
+  color: #25d366;
+  margin-bottom: 15px;
+}
+
+.note-input-area {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#noteInput, #tagInput {
+  background: #121212;
+  color: #ddd;
+  border: 1px solid #333;
+  padding: 10px;
+  border-radius: 6px;
+  resize: vertical;
+}
+
+.notes-section button {
+  align-self: flex-start;
+  background-color: #25d366;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.horizontal-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  padding-bottom: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #25d366 #121212;
+}
+
+.note-card {
+  background: #121212;
+  min-width: 250px;
+  max-width: 300px;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 15px;
+  color: #ccc;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.note-tags {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: #25d366;
+}
+
+.note-actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.note-actions button {
+  background: none;
+  border: none;
+  color: #ff6b6b;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 6px;
+}
 
 
